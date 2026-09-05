@@ -29,11 +29,6 @@
             <ui:NavigationView.FooterMenuItems>
                 <!--  设置项在代码后台追加  -->
             </ui:NavigationView.FooterMenuItems>
-            <ui:NavigationView.ContentOverlay>
-                <Grid IsHitTestVisible="False">
-                    <ui:SnackbarPresenter x:Name="SnackbarPresenter" />
-                </Grid>
-            </ui:NavigationView.ContentOverlay>
         </ui:NavigationView>
 
         <ui:TitleBar
@@ -41,5 +36,47 @@
             Title="FluentDownloader"
             Grid.Row="0"
             CloseWindowByDoubleClickOnIcon="True" />
+
+        <!--  自定义 Toast 通知（右下角）：WPF-UI 4.3.0 的 Snackbar 彩色外观存在空文本渲染缺陷，弃用  -->
+        <Border
+            x:Name="ToastBorder"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Margin="0,0,24,28"
+            MaxWidth="420"
+            MinWidth="280"
+            CornerRadius="8"
+            Background="{DynamicResource ControlFillColorDefaultBrush}"
+            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            Padding="14,12"
+            Opacity="0"
+            Visibility="Collapsed"
+            IsHitTestVisible="True"
+            MouseLeftButtonDown="OnToastClick">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="24" ShadowDepth="2" Opacity="0.35" Color="#000000" />
+            </Border.Effect>
+            <Border.RenderTransform>
+                <TranslateTransform x:Name="ToastTransform" Y="0" />
+            </Border.RenderTransform>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Width="4" Margin="0,0,12,0" CornerRadius="2"
+                        Background="{DynamicResource SystemFillColorSuccessBrush}"
+                        x:Name="ToastAccentBar" />
+                <StackPanel Grid.Column="1">
+                    <TextBlock x:Name="ToastTitle" FontWeight="SemiBold" FontSize="14"
+                               Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                               TextTrimming="CharacterEllipsis" />
+                    <TextBlock x:Name="ToastMessage" Margin="0,4,0,0" FontSize="12" TextWrapping="Wrap"
+                               MaxHeight="64"
+                               Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </ui:FluentWindow>

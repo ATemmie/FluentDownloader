@@ -30,7 +30,6 @@ public partial class App : Application
         var services = new ServiceCollection();
         services.AddSingleton<ISettingsService>(settingsService);
         services.AddSingleton<INavigationService, NavigationService>();
-        services.AddSingleton<ISnackbarService, SnackbarService>();
 
         // 核心页面（App 壳自带）
         services.AddSingleton<DashboardPage>();
