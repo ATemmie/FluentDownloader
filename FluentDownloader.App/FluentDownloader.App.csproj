@@ -38,4 +38,17 @@
           SkipUnchangedFiles="true" />
   </Target>
 
+  <!--  dotnet publish 时模块 dll 不会随主输出进入 publish 目录，单独补一次复制  -->
+  <Target Name="CopyModuleOutputsToPublish" AfterTargets="Publish">
+    <ItemGroup>
+      <PublishModuleFiles Include="..\Modules\FluentDownloader.Module.Http\bin\$(Configuration)\net8.0\**\*.*;
+                                   ..\Modules\FluentDownloader.Module.Browser\bin\$(Configuration)\net8.0-windows\**\*.*;
+                                   ..\Modules\FluentDownloader.Module.Media\bin\$(Configuration)\net8.0-windows\**\*.*;
+                                   ..\Modules\FluentDownloader.Module.Torrent\bin\$(Configuration)\net8.0-windows\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(PublishModuleFiles)"
+          DestinationFiles="@(PublishModuleFiles->'$(PublishDir)%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+  </Target>
+
 </Project>
