@@ -1,0 +1,34 @@
+# Build artifacts
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+# Test / runtime artifacts
+Tools/TestServer/big.bin
+Tools/TestServer/server.log
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Publish output
+publish/

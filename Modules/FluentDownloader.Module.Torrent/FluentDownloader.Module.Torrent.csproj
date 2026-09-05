@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Description>BitTorrent 模块：磁力链/种子下载、DHT、做种、限速（基于 MonoTorrent）。</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="MonoTorrent" Version="3.0.2" />
+    <PackageReference Include="WPF-UI" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\FluentDownloader.Contracts\FluentDownloader.Contracts.csproj" />
+    <ProjectReference Include="..\..\FluentDownloader.Core\FluentDownloader.Core.csproj" />
+  </ItemGroup>
+
+</Project>

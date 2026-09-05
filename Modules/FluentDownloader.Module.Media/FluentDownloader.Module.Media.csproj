@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Description>媒体模块：yt-dlp + ffmpeg 视频网站/音乐平台解析与下载（YouTube/B站/抖音等）。</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="WPF-UI" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\FluentDownloader.Contracts\FluentDownloader.Contracts.csproj" />
+    <ProjectReference Include="..\..\FluentDownloader.Core\FluentDownloader.Core.csproj" />
+  </ItemGroup>
+
+</Project>

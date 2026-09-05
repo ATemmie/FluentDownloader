@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>FluentDownloader</AssemblyName>
+    <RootNamespace>FluentDownloader.App</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
+    <PackageReference Include="WPF-UI" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FluentDownloader.Contracts\FluentDownloader.Contracts.csproj" />
+    <ProjectReference Include="..\FluentDownloader.Core\FluentDownloader.Core.csproj" />
+    <!--  仅建立构建顺序，不引用程序集：模块由运行时扫描加载  -->
+    <ProjectReference Include="..\Modules\FluentDownloader.Module.Http\FluentDownloader.Module.Http.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Modules\FluentDownloader.Module.Browser\FluentDownloader.Module.Browser.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Modules\FluentDownloader.Module.Media\FluentDownloader.Module.Media.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Modules\FluentDownloader.Module.Torrent\FluentDownloader.Module.Torrent.csproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <!--  把各模块的输出（含其依赖包程序集）复制进主程序输出目录，运行时按需扫描加载。
+        删除某个 FluentDownloader.Module.*.dll 即可在不重新编译的情况下移除对应功能。  -->
+  <Target Name="CopyModuleOutputs" AfterTargets="Build">
+    <ItemGroup>
+      <ModuleFiles Include="..\Modules\FluentDownloader.Module.Http\bin\$(Configuration)\net8.0\**\*.*;
+                              ..\Modules\FluentDownloader.Module.Browser\bin\$(Configuration)\net8.0-windows\**\*.*;
+                              ..\Modules\FluentDownloader.Module.Media\bin\$(Configuration)\net8.0-windows\**\*.*;
+                              ..\Modules\FluentDownloader.Module.Torrent\bin\$(Configuration)\net8.0-windows\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ModuleFiles)"
+          DestinationFiles="@(ModuleFiles->'$(OutDir)%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

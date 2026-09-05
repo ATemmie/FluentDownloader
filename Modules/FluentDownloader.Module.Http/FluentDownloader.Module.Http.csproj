@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Description>HTTP 多线程下载引擎：Range 分段并发、断点续传、限速、单连接降级。</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\FluentDownloader.Contracts\FluentDownloader.Contracts.csproj" />
+    <ProjectReference Include="..\..\FluentDownloader.Core\FluentDownloader.Core.csproj" />
+  </ItemGroup>
+
+</Project>
