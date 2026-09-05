@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:services="clr-namespace:FluentDownloader.App.Services"
+         xmlns:shared="clr-namespace:FluentDownloader.Shared.Services;assembly=FluentDownloader.Shared"
     xmlns:contracts="clr-namespace:FluentDownloader.Contracts;assembly=FluentDownloader.Contracts"
     Background="Transparent"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
@@ -131,8 +132,7 @@
         </DataTemplate>
     </Page.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
+    <Grid shared:FrameHeightConstraint.Enable="True">        <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>

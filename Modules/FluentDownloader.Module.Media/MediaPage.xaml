@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:local="clr-namespace:FluentDownloader.Module.Media"
+         xmlns:shared="clr-namespace:FluentDownloader.Shared.Services;assembly=FluentDownloader.Shared"
     Background="Transparent"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Loaded="OnLoaded">
@@ -13,7 +14,7 @@
         <local:NotEmptyToVisibleConverter x:Key="NotEmptyToVisible" />
     </Page.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer shared:FrameHeightConstraint.Enable="True" VerticalScrollBarVisibility="Auto">
         <StackPanel MaxWidth="880" Margin="44,28,44,32" HorizontalAlignment="Left">
 
             <TextBlock Text="视频 / 音乐解析" FontSize="26" FontWeight="SemiBold" />

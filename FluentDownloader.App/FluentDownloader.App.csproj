@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FluentDownloader.Contracts\FluentDownloader.Contracts.csproj" />
+    <ProjectReference Include="..\FluentDownloader.Shared\FluentDownloader.Shared.csproj" />
     <ProjectReference Include="..\FluentDownloader.Core\FluentDownloader.Core.csproj" />
     <!--  仅建立构建顺序，不引用程序集：模块由运行时扫描加载  -->
     <ProjectReference Include="..\Modules\FluentDownloader.Module.Http\FluentDownloader.Module.Http.csproj" ReferenceOutputAssembly="false" />

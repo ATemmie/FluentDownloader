@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:services="clr-namespace:FluentDownloader.App.Services"
+    xmlns:shared="clr-namespace:FluentDownloader.Shared.Services;assembly=FluentDownloader.Shared"
     Background="Transparent"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Loaded="OnLoaded">
@@ -13,7 +14,7 @@
         <services:BytesPerSecondToMbConverter x:Key="BytesToMb" />
     </Page.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer shared:FrameHeightConstraint.Enable="True" VerticalScrollBarVisibility="Auto">
         <StackPanel MaxWidth="860" Margin="44,28,44,32" HorizontalAlignment="Left">
 
             <TextBlock Text="设置" FontSize="26" FontWeight="SemiBold" />
@@ -26,17 +27,15 @@
                     <TextBlock Style="{StaticResource MutedText}" Margin="0,2,0,10"
                                Text="切换立即生效并自动保存" />
                     <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Horizontal">
-                            <RadioButton Content="浅色"
-                                         IsChecked="{Binding Settings.Theme, Converter={StaticResource EnumEquals}, ConverterParameter=Light, Mode=TwoWay}"
-                                         Checked="OnThemeChanged" />
-                            <RadioButton Content="深色"
-                                         IsChecked="{Binding Settings.Theme, Converter={StaticResource EnumEquals}, ConverterParameter=Dark, Mode=TwoWay}"
-                                         Checked="OnThemeChanged" />
-                            <RadioButton Content="跟随系统"
-                                         IsChecked="{Binding Settings.Theme, Converter={StaticResource EnumEquals}, ConverterParameter=System, Mode=TwoWay}"
-                                         Checked="OnThemeChanged" />
-                        </StackPanel>
+                        <RadioButton Content="浅色" Margin="0,0,24,0"
+                                     IsChecked="{Binding Settings.Theme, Converter={StaticResource EnumEquals}, ConverterParameter=Light, Mode=TwoWay}"
+                                     Checked="OnThemeChanged" />
+                        <RadioButton Content="深色" Margin="0,0,24,0"
+                                     IsChecked="{Binding Settings.Theme, Converter={StaticResource EnumEquals}, ConverterParameter=Dark, Mode=TwoWay}"
+                                     Checked="OnThemeChanged" />
+                        <RadioButton Content="跟随系统"
+                                     IsChecked="{Binding Settings.Theme, Converter={StaticResource EnumEquals}, ConverterParameter=System, Mode=TwoWay}"
+                                     Checked="OnThemeChanged" />
                     </StackPanel>
                 </StackPanel>
             </ui:Card>
